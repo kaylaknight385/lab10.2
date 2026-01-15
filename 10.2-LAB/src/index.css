@@ -4,25 +4,92 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: 'Angel Wish';
+  src: url('./assets/Angel wish.ttf') format('truetype'),
+       url('./assets/Angel wish.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Faith Collapsing';
+  src: url('./assets/Faith Collapsing.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
-  font-family: 'Comic Sans MS', 'Trebuchet MS', cursive, sans-serif;
-  background: linear-gradient(135deg, #1a0033 0%, #330066 50%, #660099 100%);
+  font-family: 'Faith Collapsing', 'Comic Sans MS', cursive, sans-serif;
+  background-image: url('./assets/lightning.gif');
+  background-size: cover;
+  background-position: center;
   background-attachment: fixed;
   padding: 2rem;
   line-height: 1.6;
   color: #fff;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.15) 3px
+    ),
+    linear-gradient(135deg, 
+      rgba(26, 0, 51, 0.85) 0%, 
+      rgba(51, 0, 102, 0.85) 50%, 
+      rgba(102, 0, 153, 0.85) 100%
+    );
+  pointer-events: none;
+  z-index: 1;
+  animation: scanlines 8s linear infinite;
+}
+
+@keyframes scanlines {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100%;
+  }
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .container {
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 h1 {
   text-align: center;
   color: #ff00ff;
   margin-bottom: 2rem;
-  font-size: 2.5rem;
+  font-size: 4rem;
+  font-family: 'Angel Wish', 'Comic Sans MS', cursive;
   text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
   animation: glow 2s ease-in-out infinite alternate;
 }
